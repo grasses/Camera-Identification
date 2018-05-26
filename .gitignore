@@ -1,0 +1,8 @@
+model*checkpoint
+train.ckpt.*
+board/*
+.DS_Store
+*.pyc
+.idea
+.log
+logs/*
