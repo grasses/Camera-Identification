@@ -1,0 +1,92 @@
+{
+  "net": {
+    "image_chanel": 3,
+    "image_size": 64,
+    "batch_size": 256,
+    "total_batch": 102400,
+    "label_count": 20,
+    "iterator_type": "file",
+    "pooling_scale": 2,
+    "decay_rate": 0.99,
+    "decay_steps": 500,
+    "dropout_rate": 0.75,
+    "learning_rate": 0.0025,
+    "optimizer_method": "adam",
+    "scope_name": "model.20_experiment.1_type_slide",
+    "pooling": {
+      "ksize": [1, 2, 2, 1],
+      "strides": [1, 2, 2, 1],
+      "padding": "SAME"
+    }
+  },
+  "train": {
+    "summary_steps": 50,
+    "saving_steps": 50
+  },
+  "test": {
+    "board_steps": 100,
+    "compress": "False",
+    "vote_base": 16,
+    "vote": {
+      "type": "mutiple",
+      "base": 64,
+      "mutiple_view": [1, 4, 8, 12, 16, 20, 24, 28, 32],
+      "mutiple_label": [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+      "mutiple_base": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32] 
+    },
+    "mutiple_vote": "True",
+    "mutiple_label": [1, 2, 3]
+  },
+  "process": {
+    "type": "None",
+    "mutiple_prefix": ["_c_", "_r_", "_n_"],
+    "compress": {
+      "quality": 90,
+      "extension": "JPG",
+      "save_prefix": "_c_"
+    },
+    "resize": {
+      "quality": 80,
+      "extension": "JPG",
+      "save_prefix": "_r_"
+    },
+    "noise": {
+      "quality": 5,
+      "extension": "JPG",
+      "save_prefix": "_n_"
+    },
+    "None": {
+      "quality": 0,
+      "extension": "JPG",
+      "save_prefix": "_"
+    }
+  },
+  "model": {
+    "cross_validation": {
+      "type": "random",
+      "instance": {
+        "rate": 2
+      },
+      "random": {
+        "rate": 0,
+        "test_size": 200
+      },
+      "None": {
+        "rate": 0
+      }
+    },
+    "image_shape": [64, 64, 3],
+    "crop_dropout": 0.125,
+    "max_image_noise": 100,
+    "max_fail_times": 1000,
+    "min_after_dequeue": 32768,
+    "generator_type": "slide",
+    "input_path": "/path/to/dresden/input",
+    "output_path": "/path/to/dresden/output"
+  },
+  "board": {
+    "confustion_matrix": {
+      "with_normalize": "True"
+    }
+  }
+}
