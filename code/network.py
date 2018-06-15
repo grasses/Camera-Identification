@@ -362,7 +362,7 @@ class Network(object):
 
     def train(self, X, Y, name):
         self.define_model()
-        config = tf.ConfigProto(log_device_placement=True)
+        config = tf.ConfigProto(log_device_placement=False)
         config.gpu_options.allow_growth = True
         config.gpu_options.per_process_gpu_memory_fraction = 1
         with tf.Session(config=config, graph=tf.get_default_graph()) as session:
@@ -513,7 +513,7 @@ class Network(object):
                         predict[labels[key]] = value
                         del predict[key]
                     predict_result.append({"vote_base": vote_base, "predict": predict})
-                print predict_result
+                print(predict_result)
                 return predict_result
 
     def confusion_matrix(self, y_label, y_predict, num_classes, vote_base=0):
