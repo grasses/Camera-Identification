@@ -362,7 +362,6 @@ class Network(object):
 
     def train(self, X, Y, name):
         self.define_model()
-        exit(1)
         config = tf.ConfigProto(log_device_placement=True)
         config.gpu_options.allow_growth = True
         config.gpu_options.per_process_gpu_memory_fraction = 1
